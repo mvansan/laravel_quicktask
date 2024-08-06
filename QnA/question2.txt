@@ -1,0 +1,12 @@
+Q: Neu muc dich chinh, ngan gon cua cac thu muc trong du an:
+A: Cac muc dich cua cac thu muc trong du an:
+ - app: Chua cac core source code cua ung dung, bao gom cac models, controllers va service provider
+ - bootstrap: Noi laravel duoc khoi tao, thiet lap bootstrap
+ - config: Cai dat tuy chinh he thong
+ - database: Quan ly database
+ - public: Chua file index.php
+ - resources: Chua cac file chua complile cua ung dung, bao gom view, cac tep assets
+ - routes: Chua cac file dinh nghia route cua ung dung
+ - storage: Chua cac file da duoc compiled, session, logs,..
+ - tests: Chua cac file kiem thu he thong
+ - vendor: Chua cac goi thu vien phu thuoc cua Composer
