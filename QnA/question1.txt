@@ -1,0 +1,9 @@
+Q: Co nhung cach nao de tao 1 project Laravel?
+A: Co nhung cach sau de tao 1 project Laravel:
+1. Su dung Composer:
+ - Cai dat Composer
+ - Chay cau lenh "composer create-project --prefer-dist laravel/laravel project_name" de tao project 
+2. Su dung Laravel Installer va Composer
+ - Cai dat Composer
+ - Cai dat Laravel: composer global require laravel/installer
+ - Cai dat project bang Laravel Installer: laravel new project_name

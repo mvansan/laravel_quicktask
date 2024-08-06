@@ -1,0 +1,10 @@
+Q: Vong doi cua 1 request trong Laravel?
+A:
+1. First Steps: Moi request se duoc chuyen den tep 'public/index.php', noi khoi dong framework Laravel 
+   bang cach tai autoloader cua Composer va khoi tao ung dung tu 'bootstrap/app.php'.
+2. HTTP/Console Kernel: Request duoc gui den HTTP Kernel qua phuc thuc 'handle' cua kernel.
+   HTTP kernel xu ly request thong qua cac bootstrap va middleware
+3. Service Provider: Service provider duoc load va khoi dong, cau hinh cac thanh phan quan trong cua framework
+4. Routing: Request duoc chuyen den router de xac dinh route hoac controllers xu ly. 
+   Cac middleware cu the cua route cung duoc thuc hien o day.
+5. Finish: Response tu route hoac controllers duoc gui lai qua chuoi middleware truoc khi tra ve web brower cua user
