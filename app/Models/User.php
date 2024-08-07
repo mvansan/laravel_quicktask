@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -52,5 +54,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class)
             ->withTimestamps();
+    }
+    protected function fullName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->attributes['first_name'] . ' ' . $this->attributes['last_name'],
+        );
+    }
+    protected function userName(): Attribute
+    {
+        return Attribute::make(
+            set: fn($value) => Str::slug($value),
+        );
     }
 }
