@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        return view('users.index', [
+            'users' => User::all(),
+        ]);
     }
 
     /**
@@ -20,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email',
+        ]);
+        User::create($request->all());
+
+        return redirect('/users');
     }
 
     /**
@@ -44,7 +53,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -52,7 +61,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+        ]);
+        $user = User::findOrFail($user->id);
+        $user->update($request->all());
+        return redirect('/users');
     }
 
     /**
@@ -60,6 +76,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user = User::findOrFail($user->id);
+        $user->delete();
+        return redirect('/users');
     }
 }
