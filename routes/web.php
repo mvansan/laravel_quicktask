@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
@@ -21,6 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::resources([
         'users' => UserController::class,
     ]);
+});
+
+Route::middleware(['is_admin'])->group(function () {
+    Route::get('admin/posts', [AdminPostController::class, 'index'])->name('admin.posts.index');
+    Route::get('admin/posts/create', [AdminPostController::class, 'create'])->name('admin.posts.create');
+    Route::post('admin/posts', [AdminPostController::class, 'store'])->name('admin.posts.store');
 });
 
 Route::get('/language/{locale}', [LanguageController::class, 'changeLanguage'])->name('locale');
